@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -73,68 +76,41 @@ namespace LATech_HostnameToolbox
             }
         }
 
+    public class Property : INotifyPropertyChanged
+    {
+        public Property(string name, object value)
+        {
+            Name = name;
+            Value = value;
+        }
+
+        public string Name { get; private set; }
+        public object Value { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
+
     public class PDUItem
     {
-        public string Code;
+        private readonly ObservableCollection<Property> properties = new ObservableCollection<Property>();
 
-        public PDUItem() { }
-
-        public PDUItem(string _code) { Code = _code; }
-
-        public PDUItem(PredefinedUnitsTypePredefinedUnitItem item) { Code = item.Code; }
-    }
-
-    public class PDUItemGeneral : PDUItem
-    {
-        public string Definition;
-        public string Classification;
-
-        public PDUItemGeneral(string _code, string _definition, string _classification)
+        public PDUItem(params Property[] properties)
         {
-            Definition = _definition;
-            Classification = _classification;
-            Code = _code;
+            foreach (var property in properties)
+                Properties.Add(property);
         }
 
-        public PDUItemGeneral(PredefinedUnitsTypePredefinedUnitItem item)
+        public ObservableCollection<Property> Properties
         {
-            Definition = item.Definition;
-            Classification = item.Classification;
-            Code = item.Code;
-        }
-    }
-
-    public class PDUItemLocation : PDUItem
-    {
-        public string Building;
-        public string Floor;
-
-        public PDUItemLocation(string _code, string _building, string _floor)
-        {
-            Building = _building;
-            Floor = _floor;
-            Code = _code;
+            get { return properties; }
         }
 
-        public PDUItemLocation(PredefinedUnitsTypePredefinedUnitItem item)
+        public PDUItem (PredefinedUnitsTypePredefinedUnitItem item)
         {
-            Building = item.Building;
-            Floor = item.Floor;
-            Code = item.Code;
+            IEnumerable<PropertyInfo> itemProperties = item.GetType().GetProperties();
+            IEnumerable<PropertyInfo> itemPropertiesValid = itemProperties.Where(i => i.GetValue(item,null) != null);
+            IEnumerable<Property> NewProperties = itemPropertiesValid.Select(i => (new Property(i.Name, i.GetValue(item, null))));
+            foreach (var property in NewProperties) Properties.Add(property);
         }
-    }
-
-    public class PDUItemRegex : PDUItem
-    {
-        public PDUItemRegex(string _code)
-        {
-            Code = _code;
-        }
-
-        public PDUItemRegex(PredefinedUnitsTypePredefinedUnitItem item)
-        {
-            Code = item.Code;
-        }
-
     }
 }

@@ -1,0 +1,27 @@
+﻿<Window x:Class="LATech_HostnameToolbox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LATech_HostnameToolbox"
+        mc:Ignorable="d"
+        Title="LA Tech Hostname Toolbox" Height="450" Width="800" MinHeight="300" MinWidth="600">
+    <Window.Background>
+        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}" />
+    </Window.Background>
+    <DockPanel Margin="0,0,0,0">
+        <StatusBar DockPanel.Dock="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="10,0">
+            <StatusBarItem Grid.Column="0" Content="StatusBarItem" HorizontalAlignment="Left" Padding="0" MinWidth="73" />
+            <Separator Margin="0" Width="590" Visibility="Hidden"/>
+            <ProgressBar Grid.Column="2" Width="100" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Right" Height="14" HorizontalAlignment="Right" MinWidth="100"/>
+        </StatusBar>
+        <TabControl x:Name="tabControl1" Margin="0" Grid.RowSpan="2">
+            <TabItem Header="Hostname Converter">
+                <Grid />
+            </TabItem>
+            <TabItem Header="Definition File Explorer">
+                <Frame Source="DefinitionFileExplorer.xaml" />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
