@@ -59,5 +59,26 @@ namespace LATech_HostnameToolbox.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;urn:NamingConvention xmlns:urn=&quot;urn:naming-convention&quot;&gt;
+        ///    &lt;Name&gt;Louisiana Tech University Network Naming Convention&lt;/Name&gt;
+        ///    &lt;Date&gt;2019-02-06T00:24:51-06:00&lt;/Date&gt;
+        ///    &lt;OrderedFormatString&gt;
+        ///        &lt;StringComponent&gt;Major Organization&lt;/StringComponent&gt;
+        ///        &lt;StringComponent&gt;Location ID&lt;/StringComponent&gt;
+        ///        &lt;StringComponent&gt;Inventory ID&lt;/StringComponent&gt;
+        ///        &lt;StringComponent&gt;Location Suffix&lt;/StringComponent&gt;
+        ///    &lt;/OrderedFormatString&gt;
+        ///
+        ///    &lt;PredefinedUnits&gt;
+        ///        &lt;Pred [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string NamingConvention {
+            get {
+                return ResourceManager.GetString("NamingConvention", resourceCulture);
+            }
+        }
     }
 }

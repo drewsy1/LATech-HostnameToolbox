@@ -1,0 +1,736 @@
+<?xml version="1.0"?>
+<urn:NamingConvention xmlns:urn="urn:naming-convention">
+    <Name>Louisiana Tech University Network Naming Convention</Name>
+    <Date>2019-02-06T00:24:51-06:00</Date>
+    <OrderedFormatString>
+        <StringComponent>Major Organization</StringComponent>
+        <StringComponent>Location ID</StringComponent>
+        <StringComponent>Inventory ID</StringComponent>
+        <StringComponent>Location Suffix</StringComponent>
+    </OrderedFormatString>
+
+    <PredefinedUnits>
+        <PredefinedUnit Classification="General" Name="Major Organization">
+            <Item>
+                <Code>AN</Code>
+                <Definition>Academic Affairs/ College of Applied and Natural Sciences</Definition>
+            </Item>
+            <Item>
+                <Code>AB</Code>
+                <Definition>Academic Affairs/ College of Business</Definition>
+            </Item>
+            <Item>
+                <Code>AE</Code>
+                <Definition>Academic Affairs/ College of Engineering and Science</Definition>
+            </Item>
+            <Item>
+                <Code>AD</Code>
+                <Definition>Academic Affairs/ College of Education</Definition>
+            </Item>
+            <Item>
+                <Code>AL</Code>
+                <Definition>Academic Affairs/ College of Liberal Arts</Definition>
+            </Item>
+            <Item>
+                <Code>AP</Code>
+                <Definition>Academic Affairs/ Prescott Memorial Library</Definition>
+            </Item>
+            <Item>
+                <Code>AA</Code>
+                <Definition>Academic Affairs/ Other Administrative</Definition>
+            </Item>
+            <Item>
+                <Code>FA</Code>
+                <Definition>Administration and Facilities</Definition>
+            </Item>
+            <Item>
+                <Code>FN</Code>
+                <Definition>Finance</Definition>
+            </Item>
+            <Item>
+                <Code>SA</Code>
+                <Definition>Student Affairs/ Advancement</Definition>
+            </Item>
+            <Item>
+                <Code>UA</Code>
+                <Definition>University Advancement</Definition>
+            </Item>
+            <Item>
+                <Code>TH</Code>
+                <Definition>Athletics</Definition>
+            </Item>
+        </PredefinedUnit>
+
+        <PredefinedUnit Classification="General" Name="Functional Suffix">
+            <Item>
+                <Code>CR</Code>
+                <Definition>Standard Classroom</Definition>
+                <Classification>Learning Spaces</Classification>
+            </Item>
+            <Item>
+                <Code>SC</Code>
+                <Definition>Smart Classroom</Definition>
+                <Classification>Learning Spaces</Classification>
+            </Item>
+            <Item>
+                <Code>HS</Code>
+                <Definition>Huddle Space</Definition>
+                <Classification>Learning Spaces</Classification>
+            </Item>
+            <Item>
+                <Code>CL</Code>
+                <Definition>Computer Lab</Definition>
+                <Classification>Learning Spaces</Classification>
+            </Item>
+            <Item>
+                <Code>RL</Code>
+                <Definition>Research Lab</Definition>
+                <Classification>Learning Spaces</Classification>
+            </Item>
+            <Item>
+                <Code>AD</Code>
+                <Definition>Administration, Desktop</Definition>
+                <Classification>Office/ Administration</Classification>
+            </Item>
+            <Item>
+                <Code>AM</Code>
+                <Definition>Administration, Mobile</Definition>
+                <Classification>Office/ Administration</Classification>
+            </Item>
+            <Item>
+                <Code>AV</Code>
+                <Definition>Administration, Virtual Machine</Definition>
+                <Classification>Office/ Administration</Classification>
+            </Item>
+            <Item>
+                <Code>FD</Code>
+                <Definition>Faculty, Desktop</Definition>
+                <Classification>Office/ Administration</Classification>
+            </Item>
+            <Item>
+                <Code>FM</Code>
+                <Definition>Faculty, Mobile</Definition>
+                <Classification>Office/ Administration</Classification>
+            </Item>
+            <Item>
+                <Code>FV</Code>
+                <Definition>Faculty, Virtual Machine</Definition>
+                <Classification>Office/ Administration</Classification>
+            </Item>
+            <Item>
+                <Code>CR</Code>
+                <Definition>Conference Room</Definition>
+                <Classification>Office/ Administration</Classification>
+            </Item>
+            <Item>
+                <Code>DS</Code>
+                <Definition>Digital Signage Player</Definition>
+                <Classification>IT Infrastructure</Classification>
+            </Item>
+            <Item>
+                <Code>PR</Code>
+                <Definition>Print Release Station</Definition>
+                <Classification>IT Infrastructure</Classification>
+            </Item>
+            <Item>
+                <Code>SP</Code>
+                <Definition>Server, Physical</Definition>
+                <Classification>IT Infrastructure</Classification>
+            </Item>
+            <Item>
+                <Code>SV</Code>
+                <Definition>Server, Virtual</Definition>
+                <Classification>IT Infrastructure</Classification>
+            </Item>
+        </PredefinedUnit>
+
+        <PredefinedUnit Classification="Location" Name="Location ID">
+            <Item>
+                <Code>6901</Code>
+                <Building>A.E. Phillips Lab School</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>2211</Code>
+                <Building>Academic Success Center</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2212</Code>
+                <Building>Academic Success Center</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2213</Code>
+                <Building>Academic Success Center</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2214</Code>
+                <Building>Academic Success Center</Building>
+                <Floor>4th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2601</Code>
+                <Building>Adams Classroom</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>1404</Code>
+                <Building>Art/Architecture Workshop</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>6801</Code>
+                <Building>Band Building</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>6802</Code>
+                <Building>Band Building</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2101</Code>
+                <Building>Biomedical Engineering Building</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2102</Code>
+                <Building>Biomedical Engineering Building</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2103</Code>
+                <Building>Biomedical Engineering Building</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1501</Code>
+                <Building>Bogard Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1502</Code>
+                <Building>Bogard Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1503</Code>
+                <Building>Bogard Hall</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>6701</Code>
+                <Building>Bookstore</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>6702</Code>
+                <Building>Bookstore</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>4101</Code>
+                <Building>Business Building</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>4102</Code>
+                <Building>Business Building</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>4103</Code>
+                <Building>Business Building</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3601</Code>
+                <Building>Carson Taylor Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3602</Code>
+                <Building>Carson Taylor Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3603</Code>
+                <Building>Carson Taylor Hall</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>251</Code>
+                <Building>Colab</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>252</Code>
+                <Building>Colab</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3011</Code>
+                <Building>Davison Athletic Complex</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3012</Code>
+                <Building>Davison Athletic Complex</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3013</Code>
+                <Building>Davison Athletic Complex</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>701</Code>
+                <Building>Davison Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>702</Code>
+                <Building>Davison Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>703</Code>
+                <Building>Davison Hall</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>550</Code>
+                <Building>Early Childhood Education Center</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>2301</Code>
+                <Building>Engineering Annex</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2302</Code>
+                <Building>Engineering Annex</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>8004</Code>
+                <Building>Engineering Research Lab</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>8202</Code>
+                <Building>Enterprise Center</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>8700</Code>
+                <Building>Environmental Safety Building</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>801</Code>
+                <Building>F Jay Taylor Visual Arts Center</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>802</Code>
+                <Building>F Jay Taylor Visual Arts Center</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>8205</Code>
+                <Building>Farm-Sales Room</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>5201</Code>
+                <Building>Forestry Lab</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>5701</Code>
+                <Building>George T Madison Hall</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>5702</Code>
+                <Building>George T Madison Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>5703</Code>
+                <Building>George T Madison Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>5704</Code>
+                <Building>George T Madison Hall</Building>
+                <Floor>3RD Floor</Floor>
+            </Item>
+            <Item>
+                <Code>101</Code>
+                <Building>Hale Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>102</Code>
+                <Building>Hale Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>103</Code>
+                <Building>Hale Hall</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1601</Code>
+                <Building>Howard Center</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>1602</Code>
+                <Building>Howard Center</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1603</Code>
+                <Building>Howard Center</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>601</Code>
+                <Building>Institute for Micromanufacturing</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>602</Code>
+                <Building>Institute for Micromanufacturing</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>603</Code>
+                <Building>Institute for Micromanufacturing</Building>
+                <Floor>Lab Level</Floor>
+            </Item>
+            <Item>
+                <Code>604</Code>
+                <Building>Institute for Micromanufacturing</Building>
+                <Floor>Clean Room</Floor>
+            </Item>
+            <Item>
+                <Code>1001</Code>
+                <Building>Joe Aillet Field House</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1002</Code>
+                <Building>Joe Aillet Field House</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1101</Code>
+                <Building>Joe Aillet Stadium-Football</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1102</Code>
+                <Building>Joe Aillet Stadium-Football</Building>
+                <Floor>Storage</Floor>
+            </Item>
+            <Item>
+                <Code>1103</Code>
+                <Building>Joe Aillet Stadium-Football</Building>
+                <Floor>Upper Level</Floor>
+            </Item>
+            <Item>
+                <Code>1201</Code>
+                <Building>Keeny Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1202</Code>
+                <Building>Keeny Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1203</Code>
+                <Building>Keeny Hall</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1204</Code>
+                <Building>Keeny Hall</Building>
+                <Floor>4th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>8602</Code>
+                <Building>Lambright Intramural Center</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>8606</Code>
+                <Building>Lomax Hall</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>3001</Code>
+                <Building>Memorial Gym</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3002</Code>
+                <Building>Memorial Gym</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3003</Code>
+                <Building>Memorial Gym</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>5801</Code>
+                <Building>Nethken Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>5802</Code>
+                <Building>Nethken Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>7501</Code>
+                <Building>Professional Aviation-Airport</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>8608</Code>
+                <Building>Property – Gilman Street</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>2001</Code>
+                <Building>Reese Hall</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>2002</Code>
+                <Building>Reese Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2003</Code>
+                <Building>Reese Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>401</Code>
+                <Building>Rehabilitation Science Building</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>402</Code>
+                <Building>Rehabilitation Science Building</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>403</Code>
+                <Building>Rehabilitation Science Building</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>404</Code>
+                <Building>Rehabilitation Science Building</Building>
+                <Floor>4th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2801</Code>
+                <Building>Richardson Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>2802</Code>
+                <Building>Richardson Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1901</Code>
+                <Building>Robinson Hall</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>1902</Code>
+                <Building>Robinson Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1903</Code>
+                <Building>Robinson Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1904</Code>
+                <Building>Robinson Hall</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>301</Code>
+                <Building>ROPP Center</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>302</Code>
+                <Building>ROPP Center</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>303</Code>
+                <Building>ROPP Center</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>4001</Code>
+                <Building>Student Center</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>4002</Code>
+                <Building>Student Center</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>4003</Code>
+                <Building>Student Center</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>3101</Code>
+                <Building>T.H. Harris Building-Housing</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>1701</Code>
+                <Building>Tolliver</Building>
+                <Floor>Basement</Floor>
+            </Item>
+            <Item>
+                <Code>1702</Code>
+                <Building>Tolliver</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>222</Code>
+                <Building>Trenchless Technology Research Facility</Building>
+                <Floor>N/A</Floor>
+            </Item>
+            <Item>
+                <Code>155</Code>
+                <Building>University Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>156</Code>
+                <Building>University Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>4201</Code>
+                <Building>Woodard Hall</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>4202</Code>
+                <Building>Woodard Hall</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>501</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>1st Floor</Floor>
+            </Item>
+            <Item>
+                <Code>502</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>2nd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>503</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>3rd Floor</Floor>
+            </Item>
+            <Item>
+                <Code>504</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>4th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>505</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>5th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>506</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>6th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>507</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>7th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>508</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>8th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>509</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>9th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>510</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>10th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>511</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>11th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>512</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>12th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>513</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>13th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>514</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>14th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>515</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>15th Floor</Floor>
+            </Item>
+            <Item>
+                <Code>516</Code>
+                <Building>Wyly Tower</Building>
+                <Floor>16th Floor</Floor>
+            </Item>
+        </PredefinedUnit>
+
+        <PredefinedUnit Classification="RegEx" Name="Inventory ID">
+            <Item>
+                <Code>\d{5}</Code>
+            </Item>
+        </PredefinedUnit>
+    </PredefinedUnits>
+</urn:NamingConvention>

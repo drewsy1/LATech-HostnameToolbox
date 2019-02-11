@@ -73,12 +73,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\XMLProcessing.cs" />
     <Compile Include="DefinitionFileExplorer.xaml.cs">
       <DependentUpon>DefinitionFileExplorer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HostnameConverter.xaml.cs">
+      <DependentUpon>HostnameConverter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Schemas\NamingConvention.cs" />
-    <Compile Include="XMLProcessing.cs" />
     <Page Include="DefinitionFileExplorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostnameConverter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,6 +139,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NamingConvention.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

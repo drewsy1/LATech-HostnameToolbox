@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Windows.Data;
+using System.Diagnostics;
+using System.IO;
 
 namespace LATech_HostnameToolbox
 {
@@ -15,9 +17,10 @@ namespace LATech_HostnameToolbox
     /// </summary>
     public partial class DefinitionFileExplorer : Page
     {
-        private XMLProcessing XMLProcessor;
+        private XMLProcessor XMLProcessor;
         private string XMLFileName;
         private string XMLFilePath;
+        private string RawXML;
 
         public DefinitionFileExplorer()
         {
@@ -30,7 +33,7 @@ namespace LATech_HostnameToolbox
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 if (openFileDialog.ShowDialog() == true)
-                    LoadXML(openFileDialog.FileName);
+                    LoadXML(openFileDialog.FileName, false);
             }
             catch (Exception)
             {
@@ -42,23 +45,50 @@ namespace LATech_HostnameToolbox
 
         private void ButtonRestoreDefault_Click(object sender, RoutedEventArgs e)
         {
-            LoadXML(Properties.Settings.Default.DefaultXML);
+            string RawXMLResource = GetResourceTextFile("NamingConvention.xml");
+            LoadXML(RawXMLResource, true);
 
             RefreshForm();
         }
 
-        private void LoadXML(string XMLFile)
+        private void LoadXML(string XMLFile, bool IsResource)
         {
             try
             {
-                XMLFilePath = System.IO.Path.GetFullPath(XMLFile);
-                XMLFileName = System.IO.Path.GetFileName(XMLFilePath);
-                XMLProcessor = new XMLProcessing(XMLFilePath);
+                if (IsResource)
+                {
+                    XMLFilePath = "Default Naming Convention";
+                    XMLFileName = "Default Naming Convention";
+                    RawXML = XMLFile;
+                }
+                else
+                {
+                    XMLFilePath = Path.GetFullPath(XMLFile);
+                    XMLFileName = Path.GetFileName(XMLFilePath);
+                    RawXML = File.ReadAllText(XMLFilePath);
+                }
+
+                XMLProcessor = new XMLProcessor(RawXML);
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+        public string GetResourceTextFile(string filename)
+        {
+            string result = string.Empty;
+
+            using (Stream stream = GetType().Assembly.
+                       GetManifestResourceStream("LATech_HostnameToolbox.Resources." + filename))
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
         }
 
         private void RefreshForm()
@@ -82,7 +112,7 @@ namespace LATech_HostnameToolbox
 
                 var columns = PDUItems.First()
                     .Properties
-                    .Select((x, i) => new { Name = x.Name, Index = i })
+                    .Select((x, i) => new { x.Name, Index = i })
                     .ToArray();
 
                 DataGrid tempDataGrid = new DataGrid
@@ -101,24 +131,6 @@ namespace LATech_HostnameToolbox
                     tempDataGrid.Columns.Add(new DataGridTextColumn() { Header = column.Name, Binding = binding });
                 }
                 tempDataGrid.Columns.Last().Width = new DataGridLength(1, DataGridLengthUnitType.Star) ;
-
-                //PDU.Item.Select(p => { }
-
-                //switch (PDU.Classification)
-                //{
-                //    case ("General"):
-                //        Items = PDU.Item.Select(p => new PDUItemGeneral(p)).ToArray();
-                //        break;
-                //    case ("Location"):
-                //        ICollection Items = PDU.Item.Select(p => new PDUItemLocation(p)).ToArray();
-                //        break;
-                //    case ("Regex"):
-                //        ICollection Items = PDU.Item.Select(p => new PDUItemRegex(p)).ToArray();
-                //        break;
-                //    default:
-                //        ICollection Items = PDU.Item.Select(p => new PDUItem(p)).ToArray();
-                //        break;
-                //}
 
                 TabItem tempTabItem = new TabItem
                 {

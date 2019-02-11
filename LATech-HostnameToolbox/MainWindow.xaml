@@ -17,7 +17,7 @@
         </StatusBar>
         <TabControl x:Name="tabControl1" Margin="0" Grid.RowSpan="2">
             <TabItem Header="Hostname Converter">
-                <Grid />
+                <Frame Source="HostnameConverter.xaml" />
             </TabItem>
             <TabItem Header="Definition File Explorer">
                 <Frame Source="DefinitionFileExplorer.xaml" />
