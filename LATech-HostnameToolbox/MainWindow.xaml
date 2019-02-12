@@ -50,20 +50,30 @@
 
             <TabControl x:Name="tabControlHost" Margin="0" Grid.RowSpan="2">
                 <TabItem Header="Hostname Converter">
-                    <Grid Margin="10">
+                    <Grid x:Name="gridHostnameConverter" Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="5" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Grid Margin="0" Grid.Row="2" >
-                            <DataGrid x:Name="dataGrid" Width="100"/>
+                        <Grid Margin="0" x:Name="gridHostnameConverterControls" Grid.Row="2" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
                         </Grid>
 
                     </Grid>
                 </TabItem>
                 <TabItem Header="Definition File Explorer" ForceCursor="True">
-                    <TabControl x:Name="tabControlPDU" FontWeight="Normal" Margin="5">
+                    <TabControl x:Name="tabControlPDU" FontWeight="Normal" Margin="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                         <TabItem Header="">
                             <Grid Background="#FFE5E5E5">
                                 <DataGrid x:Name="dataGridPDU" Margin="0"/>
@@ -73,5 +83,6 @@
                 </TabItem>
             </TabControl>
         </Grid>
+        
     </DockPanel>
 </Window>
