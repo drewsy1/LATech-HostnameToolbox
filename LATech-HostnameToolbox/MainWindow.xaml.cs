@@ -1,129 +1,104 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using Schemas;
-using System.IO;
-using System.Collections;
-using System.Reflection;
-using System.Windows.Markup;
 
 namespace LATech_HostnameToolbox
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        private XMLProcessor _XMLProcessor;
-        private string XMLFileName;
-        private string XMLFilePath;
-        private string RawXML;
-        private string RawXMLResource;
+        private XMLProcessor _xmlProcessor;
+        private string _xmlFileName;
+        private string _xmlFilePath;
+        private string _rawXml;
+        private readonly string _rawXmlResource;
 
         public MainWindow()
         {
-            RawXMLResource = GetResourceTextFile("NamingConvention.xml");
+            _rawXmlResource = GetResourceTextFile("NamingConvention.xml");
             InitializeComponent();
         }
 
         #region UI element interactions/logic
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadDefaultXML();
+            LoadDefaultXml();
         }
 
         private void ButtonRestoreDefault_Click(object sender, RoutedEventArgs e)
         {
-            LoadDefaultXML();
+            LoadDefaultXml();
         }
 
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                if (openFileDialog.ShowDialog() == true)
-                    LoadXML(openFileDialog.FileName, false);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+                LoadXml(openFileDialog.FileName, false);
 
             RefreshForm();
         }
         #endregion
 
-        private void LoadDefaultXML()
+        private void LoadDefaultXml()
         {
-            LoadXML(RawXMLResource, true);
+            LoadXml(_rawXmlResource, true);
         }
 
-        private void LoadXML(string XMLFile, bool IsResource)
+        private void LoadXml(string xmlFile, bool isResource)
         {
-            try
+            if (isResource)
             {
-                if (IsResource)
-                {
-                    XMLFilePath = "Default Naming Convention";
-                    XMLFileName = "Default Naming Convention";
-                    RawXML = XMLFile;
-                }
-                else
-                {
-                    XMLFilePath = System.IO.Path.GetFullPath(XMLFile);
-                    XMLFileName = System.IO.Path.GetFileName(XMLFilePath);
-                    RawXML = File.ReadAllText(XMLFilePath);
-                }
+                _xmlFilePath = "Default Naming Convention";
+                _xmlFileName = "Default Naming Convention";
+                _rawXml = xmlFile;
+            }
+            else
+            {
+                _xmlFilePath = Path.GetFullPath(xmlFile);
+                _xmlFileName = Path.GetFileName(_xmlFilePath);
+                _rawXml = File.ReadAllText(_xmlFilePath);
+            }
 
-                _XMLProcessor = new XMLProcessor(RawXML);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            _xmlProcessor = new XMLProcessor(_rawXml);
 
             RefreshForm();
         }
 
         private void RefreshForm()
         {
-            textBoxName.Text = _XMLProcessor.Name;
-            textBoxFormat.Text = _XMLProcessor.FormatString;
-            labelDate.Content = _XMLProcessor.Date;
-            labelCurrentFilePath.Content = XMLFileName;
-            labelCurrentFilePath.ToolTip = XMLFilePath;
+            TextBoxName.Text = _xmlProcessor.Name;
+            TextBoxFormat.Text = _xmlProcessor.FormatString;
+            LabelDate.Content = _xmlProcessor.Date;
+            LabelCurrentFilePath.Content = _xmlFileName;
+            LabelCurrentFilePath.ToolTip = _xmlFilePath;
 
-            tabControlPDU.Items.Clear();
-            gridHostnameConverterControls.Children.Clear();
-            if(gridHostnameConverterControls.ColumnDefinitions.Count > 1)
-                gridHostnameConverterControls.ColumnDefinitions.RemoveRange(1, gridHostnameConverterControls.ColumnDefinitions.Count - 1);
+            TabControlPdu.Items.Clear();
+            GridHostnameConverterControls.Children.Clear();
+            if(GridHostnameConverterControls.ColumnDefinitions.Count > 1)
+                GridHostnameConverterControls.ColumnDefinitions.RemoveRange(1, GridHostnameConverterControls.ColumnDefinitions.Count - 1);
 
 
-            DataGridCollection dataGrids = new DataGridCollection(_XMLProcessor.PredefinedUnits);
+            DataGridCollection dataGrids = new DataGridCollection(_xmlProcessor.PredefinedUnits);
 
             List<TabItem> dataGridTabItems = dataGrids.ToTabItems();
-            dataGridTabItems.ForEach(x => tabControlPDU.Items.Add(x));
+            dataGridTabItems.ForEach(x => TabControlPdu.Items.Add(x));
 
             List<Control[]> dataGridControls = dataGrids.ToGridObjects();
             for (int i = 0; i < dataGridControls.Count; i++)
             {
                 Control[] currentGridGroup = dataGridControls[i];
-                gridHostnameConverterControls.Children.Add(currentGridGroup[0]);
-                gridHostnameConverterControls.Children.Add(currentGridGroup[1]);
-                gridHostnameConverterControls.Children.Add(currentGridGroup[2]);
+                GridHostnameConverterControls.Children.Add(currentGridGroup[0]);
+                GridHostnameConverterControls.Children.Add(currentGridGroup[1]);
+                GridHostnameConverterControls.Children.Add(currentGridGroup[2]);
 
                 if (i < dataGridControls.Count - 1)
                 {
@@ -131,19 +106,19 @@ namespace LATech_HostnameToolbox
                                 new ColumnDefinition { Width = new GridLength(5) },
                                 new ColumnDefinition { Width = new GridLength(1,GridUnitType.Star) }
                             };
-                    newColumns.ForEach(col => gridHostnameConverterControls.ColumnDefinitions.Add(col));
+                    newColumns.ForEach(col => GridHostnameConverterControls.ColumnDefinitions.Add(col));
                 }
-            };
+            }
         }
 
         public string GetResourceTextFile(string filename)
         {
-            string result = string.Empty;
+            string result;
 
             using (Stream stream = GetType().Assembly.
                        GetManifestResourceStream("LATech_HostnameToolbox.Resources." + filename))
             {
-                using (StreamReader sr = new StreamReader(stream))
+                using (StreamReader sr = new StreamReader(stream ?? throw new InvalidOperationException()))
                 {
                     result = sr.ReadToEnd();
                 }
@@ -153,66 +128,66 @@ namespace LATech_HostnameToolbox
 
         private class DataGridCollection
         {
-            public List<DataGrid> _dataGrids1 = new List<DataGrid>();
-            public List<DataGrid> _dataGrids2 = new List<DataGrid>();
+            private readonly List<DataGrid> _dataGrids1 = new List<DataGrid>();
+            private readonly List<DataGrid> _dataGrids2 = new List<DataGrid>();
 
-            public DataGridCollection(List<PredefinedUnitsTypePredefinedUnit> PDUs)
+            public DataGridCollection(List<PredefinedUnitsTypePredefinedUnit> pdUs)
             {
                 _dataGrids1.Clear();
                 _dataGrids2.Clear();
-                foreach (PredefinedUnitsTypePredefinedUnit PDU in PDUs)
+                foreach (PredefinedUnitsTypePredefinedUnit pdu in pdUs)
                 {
-                    List<PDUItem> PDUItems = new List<PDUItem>();
-                    foreach (PredefinedUnitsTypePredefinedUnitItem item in PDU.Item)
+                    List<PDUItem> pduItems = new List<PDUItem>();
+                    foreach (PredefinedUnitsTypePredefinedUnitItem item in pdu.Item)
                     {
-                        PDUItem NewPDUItem = new PDUItem(item);
-                        PDUItems.Add(NewPDUItem);
+                        PDUItem newPduItem = new PDUItem(item);
+                        pduItems.Add(newPduItem);
                     }
 
-                    var columns = PDUItems.First()
+                    var columns = pduItems.First()
                         .Properties
                         .Select((x, i) => new { x.Name, Index = i })
                         .ToArray();
 
                     DataGrid tempDataGrid1 = new DataGrid
                     {
-                        Tag = PDU.Name,
+                        Tag = pdu.Name,
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         VerticalAlignment = VerticalAlignment.Stretch,
                         AutoGenerateColumns = false,
-                        ItemsSource = PDUItems,
+                        ItemsSource = pduItems,
                         IsReadOnly = true
                     };
                     DataGrid tempDataGrid2 = new DataGrid
                     {
-                        Name = "dataGrid" + PDU.Name.Replace(" ", ""),
-                        Tag = PDU.Name,
+                        Name = "dataGrid" + pdu.Name.Replace(" ", ""),
+                        Tag = pdu.Name,
                         HorizontalAlignment = HorizontalAlignment.Stretch,
                         VerticalAlignment = VerticalAlignment.Stretch,
                         AutoGenerateColumns = false,
-                        ItemsSource = PDUItems,
+                        ItemsSource = pduItems,
                         IsReadOnly = true
                     };
 
                     foreach (var column in columns)
                     {
-                        var binding = new Binding(string.Format("Properties[{0}].Value", column.Index));
+                        var binding = new Binding($"Properties[{column.Index}].Value");
 
-                        tempDataGrid1.Columns.Add(new DataGridTextColumn() { Header = column.Name, Binding = binding });
-                        tempDataGrid2.Columns.Add(new DataGridTextColumn() { Header = column.Name, Binding = binding });
+                        tempDataGrid1.Columns.Add(new DataGridTextColumn { Header = column.Name, Binding = binding });
+                        tempDataGrid2.Columns.Add(new DataGridTextColumn { Header = column.Name, Binding = binding });
                     }
                     tempDataGrid1.Columns.Last().Width = new DataGridLength(1, DataGridLengthUnitType.Star);
                     tempDataGrid2.Columns.Last().Width = new DataGridLength(1, DataGridLengthUnitType.Star);
 
-                    this._dataGrids1.Add(tempDataGrid1);
-                    this._dataGrids2.Add(tempDataGrid2);
+                    _dataGrids1.Add(tempDataGrid1);
+                    _dataGrids2.Add(tempDataGrid2);
                 }
             }
 
             public List<TabItem> ToTabItems()
             {
-                List<TabItem> TabItems = _dataGrids1.ConvertAll((DataGrid x) => new TabItem{Header = x.Tag,Content = x});
-                return TabItems;
+                List<TabItem> tabItems = _dataGrids1.ConvertAll(x => new TabItem{Header = x.Tag,Content = x});
+                return tabItems;
             }
 
             public List<Control[]> ToGridObjects()
@@ -220,14 +195,16 @@ namespace LATech_HostnameToolbox
                 int currentCol = 0;
                 return _dataGrids2.ConvertAll(currentGrid =>
                     {
-                        Label newLabel = new Label() {
+                        Label newLabel = new Label
+                        {
                             Name = "label" + currentGrid.Tag.ToString().Replace(" ", ""),
                             Content = currentGrid.Tag.ToString()
                         };
                         newLabel.SetValue(Grid.RowProperty, 0);
                         newLabel.SetValue(Grid.ColumnProperty, currentCol);
 
-                        TextBox newTextBox = new TextBox() {
+                        TextBox newTextBox = new TextBox
+                        {
                             Name = "textBox" + currentGrid.Tag.ToString().Replace(" ", ""),
                             Height = 23,
                             TextWrapping = TextWrapping.Wrap,

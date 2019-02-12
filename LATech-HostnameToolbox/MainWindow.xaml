@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LATech_HostnameToolbox"
-        xmlns:local1="clr-namespace:LATech_HostnameToolbox;assembly=LATech_HostnameToolbox" x:Class="LATech_HostnameToolbox.MainWindow"
+        x:Class="LATech_HostnameToolbox.MainWindow"
         mc:Ignorable="d"
         Title="LA Tech Hostname Toolbox" Height="768" Width="1024" MinHeight="300" MinWidth="600" Loaded="Window_Loaded">
     <Window.Background>
@@ -12,11 +11,11 @@
     </Window.Background>
     <DockPanel Margin="0,0,0,0">
         <StatusBar DockPanel.Dock="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="10,0">
-            <StatusBarItem Grid.Column="0" Content="StatusBarItem" HorizontalAlignment="Left" Padding="0" MinWidth="73" />
+            <StatusBarItem Content="StatusBarItem" HorizontalAlignment="Left" Padding="0" MinWidth="73" />
             <Separator Margin="0" Width="590" Visibility="Hidden"/>
-            <ProgressBar Grid.Column="2" Width="100" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Right" Height="14" HorizontalAlignment="Right" MinWidth="100"/>
+            <ProgressBar Width="100" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Right" Height="14" HorizontalAlignment="Right" MinWidth="100"/>
         </StatusBar>
-        <GroupBox x:Name="groupBox" Header="Current Definition File" FontWeight="Bold" HorizontalContentAlignment="Stretch" Padding="5" Margin="0" MinHeight="80" DockPanel.Dock="Top">
+        <GroupBox x:Name="GroupBox" Header="Current Definition File" FontWeight="Bold" HorizontalContentAlignment="Stretch" Padding="5" Margin="0" MinHeight="80" DockPanel.Dock="Top">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
@@ -35,28 +34,29 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.ColumnSpan="3" x:Name="labelCurrentFilePath" Content="&lt;Current Path&gt;" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" />
-                <Button x:Name="buttonBrowse" Content="Browse..." Margin="0" Grid.Row="1" FontWeight="Normal" Height="25" VerticalAlignment="Bottom" Click="ButtonBrowse_Click" />
-                <Button x:Name="buttonRestoreDefault" Content="Restore Default" Margin="0" Grid.Column="2" Grid.Row="1" FontWeight="Normal" Click="ButtonRestoreDefault_Click" />
-                <Label x:Name="labelName" Grid.Column="4" Content="Name" TextOptions.TextFormattingMode="Display" Padding="0" FontWeight="Normal" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-                <TextBox x:Name="textBoxName" TextWrapping="Wrap" Grid.Column="6" Height="24" Margin="0" FontWeight="Normal" Padding="5,0" VerticalContentAlignment="Center" />
-                <Label x:Name="labelFormat" Grid.Column="4" Content="Format" TextOptions.TextFormattingMode="Display" Grid.Row="1" VerticalAlignment="Bottom" Padding="0,5" FontWeight="Normal" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch" />
-                <TextBox x:Name="textBoxFormat" TextWrapping="Wrap" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Height="24" Margin="0" FontWeight="Normal" Padding="5,0" VerticalContentAlignment="Center" />
+                <Label Grid.Row="0" Grid.ColumnSpan="3" x:Name="LabelCurrentFilePath" Content="&lt;Current Path&gt;" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" />
+                <Button x:Name="ButtonBrowse" Content="Browse..." Margin="0" Grid.Row="1" Grid.Column="0"
+                        FontWeight="Normal" Height="25" VerticalAlignment="Bottom" Click="ButtonBrowse_Click" />
+                <Button x:Name="ButtonRestoreDefault" Content="Restore Default" Margin="0" Grid.Column="2" Grid.Row="1" FontWeight="Normal" Click="ButtonRestoreDefault_Click" />
+                <Label x:Name="LabelName" Grid.Row="0" Grid.Column="4" Content="Name" TextOptions.TextFormattingMode="Display" Padding="0" FontWeight="Normal" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <TextBox x:Name="TextBoxName" TextWrapping="Wrap" Grid.Row="0" Grid.Column="6" Height="24" Margin="0" FontWeight="Normal" Padding="5,0" VerticalContentAlignment="Center" />
+                <Label x:Name="LabelFormat" Grid.Column="4" Content="Format" TextOptions.TextFormattingMode="Display" Grid.Row="1" VerticalAlignment="Bottom" Padding="0,5" FontWeight="Normal" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch" />
+                <TextBox x:Name="TextBoxFormat" TextWrapping="Wrap" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Height="24" Margin="0" FontWeight="Normal" Padding="5,0" VerticalContentAlignment="Center" />
 
-                <Label x:Name="labelDate" Content="Date Modified" TextOptions.TextFormattingMode="Display" Grid.Row="0" Grid.Column="8" Padding="0" FontWeight="Normal" VerticalContentAlignment="Center" FontStyle="Italic" HorizontalContentAlignment="Right" />
+                <Label x:Name="LabelDate" Content="Date Modified" TextOptions.TextFormattingMode="Display" Grid.Row="0" Grid.Column="8" Padding="0" FontWeight="Normal" VerticalContentAlignment="Center" FontStyle="Italic" HorizontalContentAlignment="Right" />
             </Grid>
         </GroupBox>
         <Grid>
 
-            <TabControl x:Name="tabControlHost" Margin="0" Grid.RowSpan="2">
+            <TabControl x:Name="TabControlHost" Margin="0" Grid.RowSpan="2">
                 <TabItem Header="Hostname Converter">
-                    <Grid x:Name="gridHostnameConverter" Margin="5">
+                    <Grid x:Name="GridHostnameConverter" Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="5" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Grid Margin="0" x:Name="gridHostnameConverterControls" Grid.Row="2" >
+                        <Grid Margin="0" x:Name="GridHostnameConverterControls" Grid.Row="2" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -73,10 +73,10 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Definition File Explorer" ForceCursor="True">
-                    <TabControl x:Name="tabControlPDU" FontWeight="Normal" Margin="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                    <TabControl x:Name="TabControlPdu" FontWeight="Normal" Margin="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                         <TabItem Header="">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid x:Name="dataGridPDU" Margin="0"/>
+                                <DataGrid x:Name="DataGridPdu" Margin="0"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
