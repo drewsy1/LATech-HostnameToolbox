@@ -21,9 +21,9 @@ namespace LATech_HostnameToolbox
         public string FormatString { get; set; }
         public List<PredefinedUnitsTypePredefinedUnit> PredefinedUnits { get; set; }
 
-        public XMLProcessor(string RawXML)
+        public XMLProcessor(string RawXMLText)
         {
-            this.RawXML = RawXML;
+            this.RawXML = RawXMLText;
             NamingConvention = this.RawXML.ParseXML<NamingConventionType>();
             Name = NamingConvention.Name;
             Date = NamingConvention.Date;
